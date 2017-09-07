@@ -40,11 +40,11 @@ var AccessPointComponent = function(options) {
    * renderGui
    * @description
    * THis Method will be called to render the Components Config UI
-   * @param void
+   * @param elContainer     This is the Container where the GUI is rendered to
    * @return void
    */
-  this.renderGui = function() {
-
+  this.renderGui = function(elContainer) {
+    $(elContainer).append('<input type="text" class="form-control" placeholder="Maximilian Mustermann">');
   };
 
   /**

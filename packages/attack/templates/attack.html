@@ -20,7 +20,7 @@
               {{/attack_plan}}
 
               <div class="col-sm-3" style="text-align: center;">
-                <button class="btn btn-lg btn-success btn-block add_modal_btn" data-target="#modal_select_component">
+                <button class="btn btn-lg btn-success btn-block add_modal_btn" data-target="">
                   <i class="fa fa-plus-circle"></i><br>
                   <span style="font-size: 11px">Element</span>
                 </button>
@@ -65,11 +65,27 @@
             </div>
           </div>
         </div>
-      </row>
+      </div>
     </div>
   </div>
 
   <!-- Config Component Modal (filled by Component )-->
+  <div id="modal_config_component" class="pip-modal" style="display:none;">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="card pip-card">
+            <div class="card-body pip-card-body">
+              <p class="card-text pip-card-title">Component Configuration <span class="fa fa-times fa-2x close_modal_btn pull-right" style="margin-top:-8px;"></span</p>
+              <p class="card-text pip-card-text">
+                CONTENT
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Save Attack Plan Modal -->
 
@@ -78,4 +94,5 @@
   <!-- Execution Terminal Modal -->
   <!-- This displays the Terminal and starting the Attack -->
   <!-- When The attack is running show PipOS full size Box with Attack Live view -->
+
 </div>

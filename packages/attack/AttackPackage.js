@@ -130,14 +130,14 @@ var AttackPackage = function(options) {
   this.eventManager = function() {
     // Click: Add Component Button Handler
     $('body').on('click', 'button.add_modal_btn', function() {
-      var strModalId = $(this).data('target');
-      $(strModalId).fadeIn();
+      $('#modal_select_component').fadeIn();
     });
 
     // Click: Close Modal Button Handler
     $('body').on('click', 'span.close_modal_btn', function() {
       var strModalId = '#' + $(this).closest('div.pip-modal').attr('id');
-      $(strModalId).fadeOut();
+      $(strModalId).hide();
+      $this.renderAttackGui();
     });
 
     // Click: Select Component Button Handler
@@ -153,9 +153,11 @@ var AttackPackage = function(options) {
     $('body').on('click', 'button.config_component_btn', function() {
       var numIndex = $(this).data('id');
       var objComponent = $this.options.attack_plan[numIndex];
-      alert('TODO: Component Form Building');
-      console.log(objComponent);
-      $this.renderAttackGui();
+      var objContainer = $('#modal_config_component').find('p.pip-card-text');
+      objContainer.html("");
+      objComponent.renderGui(objContainer);
+      $('#modal_config_component').fadeIn();
+      $('#modal_config_component').attr('data-component-id', numIndex);
     });
 
     // Click: Save
