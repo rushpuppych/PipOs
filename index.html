@@ -1,0 +1,45 @@
+<html>
+  <head>
+    <title>VectorSix - HackerLab</title>
+
+    <!-- Vendor CSS Include -->
+    <link rel="stylesheet" type="text/css" href="vendor/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="vendor/bootstrap-4.0.0-beta/css/bootstrap.min.css">
+    <link href="vendor/jcubic-jquery-terminal/css/jquery.terminal-1.6.1.css" rel="stylesheet"/>
+
+    <!-- PipOs CSS Include -->
+    <link rel="stylesheet" type="text/css" href="assets/css/pipos.css">
+
+    <!-- Vendor JavaScript Include -->
+    <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+
+    <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+    <script src="vendor/popper.js-1.12.5/dist/popper.min.js"></script>
+    <script src="vendor/bootstrap-4.0.0-beta/js/bootstrap.min.js"></script>
+    <script src="vendor/jcubic-jquery-terminal/js/jquery.terminal-1.6.1.min.js"></script>
+    <script src="vendor/mustache/mustache.min.js"></script>
+
+    <!-- PipOs Javascript Include -->
+    <script src="packages/attack/component/AccessPointComponent.js"></script>
+    <script src="packages/attack/AttackPackage.js"></script>
+    <script src="lib/PipOsHelper.js"></script>
+    <script src="lib/PipOsFormBuilder.js"></script>
+    <script src="lib/PipOsFilesystem.js"></script>
+    <script src="PipOs.js"></script>
+    <script>if (window.module) module = window.module;</script>
+
+    <!-- PipOs Run -->
+    <script>
+      $(function() {
+        setTimeout(function () {
+          var objPipOs = new PipOs();
+          objPipOs.run();
+        }, 500);
+      })
+    </script>
+
+  </head>
+  <body>
+    <div class="pipos-content-box"></div>
+  </body>
+</html>

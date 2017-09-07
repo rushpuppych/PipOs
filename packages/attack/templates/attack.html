@@ -1,0 +1,81 @@
+<div class="gui-content">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card pip-card" style="height:100%;">
+        <div class="card-body pip-card-body" style="overflow: scroll;">
+          <p class="card-text pip-card-title">
+            Attack Plan Builder
+            <span id="msg_ilegal_caution" class="badge badge-warning pull-right" style="font-size: 13px; display: none;">Caution this Config is could be ilegal !</span>
+            <span id="msg_ilegal_warning" class="badge badge-danger pull-right" style="font-size: 13px;  display: none;">Warning this Config is Highly ilegal !</span>
+          </p>
+          <p class="card-text pip-card-text">
+            <div class="row attack-plan-list">
+              {{#attack_plan}}
+                <div class="col-sm-3" style="text-align: center; margin-bottom: 15px; {{^valide}}opacity: 0.3;{{/valide}}">
+                  <button class="btn btn-lg btn-{{color}} btn-block config_component_btn" data-id="{{index}}">
+                    <i class="fa {{icon}}"></i><br>
+                    <span style="font-size: 11px">{{name}}</span>
+                  </button>
+                </div>
+              {{/attack_plan}}
+
+              <div class="col-sm-3" style="text-align: center;">
+                <button class="btn btn-lg btn-success btn-block add_modal_btn" data-target="#modal_select_component">
+                  <i class="fa fa-plus-circle"></i><br>
+                  <span style="font-size: 11px">Element</span>
+                </button>
+              </div>
+            </div>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card pip-card" style="height:55px;">
+        <div class="card-body pip-card-body">
+          <p class="card-text pip-card-text">
+            <button class="btn btn-sm btn-success">Save</button>
+            <button class="btn btn-sm btn-success">Load</button>
+            <button class="btn btn-sm btn-success pull-right">Execute</button>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Select Component Modal -->
+  <div id="modal_select_component" class="pip-modal" style="display:none;">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="card pip-card">
+            <div class="card-body pip-card-body">
+              <p class="card-text pip-card-title">Select Component <span class="fa fa-times fa-2x close_modal_btn pull-right" style="margin-top:-8px;"></span</p>
+              <p class="card-text pip-card-text">
+                <div class="row">
+                  {{#components}}
+                  <div class="col-sm-6">
+                    <button class="btn btn-sm btn-block btn-{{color}} add_component_btn" data-class-name="{{class_name}}" style="text-align: left;"><i class="fa {{icon}}"></i>&nbsp;{{name}}<br><span style="font-size: 12px;">{{description}}</span></button>
+                  </div>
+                  {{/components}}
+                </div>
+              </p>
+            </div>
+          </div>
+        </div>
+      </row>
+    </div>
+  </div>
+
+  <!-- Config Component Modal (filled by Component )-->
+
+  <!-- Save Attack Plan Modal -->
+
+  <!-- Load Attack Plan Modal -->
+
+  <!-- Execution Terminal Modal -->
+  <!-- This displays the Terminal and starting the Attack -->
+  <!-- When The attack is running show PipOS full size Box with Attack Live view -->
+</div>

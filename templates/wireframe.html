@@ -1,0 +1,36 @@
+<!-- Gui Container -->
+<div id="pip-wireframe" class="container">
+  <div class="row">
+    <!-- Navigation -->
+    <div class="col-sm-3">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="card pip-card">
+            <div class="card-body pip-card-body">
+              <p id="gui-timer" class="card-text pip-card-text" style="font-size: 14px;">&nbsp<br>&nbsp<br>&nbsp</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="card pip-card">
+            <div class="card-body pip-card-body">
+              <p class="card-text pip-card-text">
+                {{#menu}}
+                  <button class="btn btn-success btn-block btn-sm" data-menu-btn-package="{{uuid}}"><i class="fa {{icon}} pull-left"></i>&nbsp;{{title}}</button>
+                {{/menu}}
+                <br>
+                <button class="btn btn-success btn-block btn-sm" data-content-link="system"><i class="fa fa-cog pull-left"></i>&nbsp;System</button>
+                <button class="btn btn-success btn-block btn-sm" data-content-link="shutdown"><i class="fa fa-power-off pull-left"></i>&nbsp;Shutdown</button>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Content -->
+    <div id="pip-package-content" class="col-sm-9">
+    </div>
+  </div>
+</div>

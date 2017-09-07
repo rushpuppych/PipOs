@@ -1,0 +1,36 @@
+{
+	"apt-dependency-packages": [
+		"blaa1",
+		"blaa2",
+		"blaa3"
+	],
+	"tool-dependency-packages": [{
+		"name": "",
+		"git": ""
+	}],
+	"network_devices": [{
+			"typ": "wlan_adapter",
+			"name": "wlan_alfa",
+			"mac": "00:00:00:00:00",
+			"modes": ["monitor", "injection", "accesspoint", "client"]
+		},
+		{
+			"typ": "wlan_adapter",
+			"name": "wlan_raspi",
+			"mac": "00:00:00:00:00",
+			"modes": ["accesspoint", "client"]
+		},
+		{
+			"typ": "wlan_adapter",
+			"name": "wlan_stick",
+			"mac": "00:00:00:00:00",
+			"modes": ["client"]
+		},
+		{
+			"typ": "eth_adapter",
+			"name": "eth_raspi",
+			"mac": "00:00:00:00:00",
+			"modes": []
+		}
+	]
+}
