@@ -26,7 +26,6 @@ var AccessPointComponent = function(options) {
     var objInfo = {
       name: "AccessPoint",
       icon: "fa fa-wifi",
-      description: "Uses a Wireless Interface to setup a AccessPoint.",
       color: "warning",
       class_name: "AccessPointComponent",
       valide: $this.options.valide,
@@ -44,7 +43,16 @@ var AccessPointComponent = function(options) {
    * @return void
    */
   this.renderGui = function(elContainer) {
-    $(elContainer).append('<input type="text" class="form-control" placeholder="Maximilian Mustermann">');
+    formular.addTextbox({label: 'SSID', placeholder: 'Please enter SSID', help: 'The SSID is the name of the Wireless Network wich can be seen by all clients in the radius.'});
+    formular.addInfoText({});
+    formular.addTextArea({});
+    formular.addRadiobox({});
+    formular.addCheckbox({});
+    formular.addSelectbox({});
+    formular.addSubmit({});
+
+    var strHtml = formular.render();
+    $(elContainer).html(strHtml);
   };
 
   /**
