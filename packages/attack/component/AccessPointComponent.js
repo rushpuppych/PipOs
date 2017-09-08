@@ -43,8 +43,10 @@ var AccessPointComponent = function(options) {
    */
   this.renderGui = function(elContainer) {
     var objForm = new PipOsFormBuilder();
+    objForm.addSelectbox({label: 'Interface', options: [{value: 'wlan_raspi', key: 'wlan_raspi'}, {value: 'wlan_stick', key: 'wlan_stick'}, {value: 'wlan_alfa', key: 'wlan_alfa'}], help: 'This is the interface wich the Accesspoint will setup.'})
     objForm.addTextbox({label: 'SSID', placeholder: 'Please enter SSID', help: 'The SSID is the name of the Wireless Network wich can be seen by all clients in the radius.'});
     objForm.addCheckbox({label: 'Hidden SSID', multi: [{value: 'hide', key: 'Yes hide AP.'}], help: 'Stops Broadcasting and hides the network from being seen by nerby Clients.'})
+    objForm.addTextbox({label: 'Channel', placeholder: 'Please enter a channel id from 1 to 14', help: 'This is the Channel number on wich the Accesspoint will send and recive data.'});
     objForm.addSelectbox({label: 'Encryption', options: [{value: 'none', key: 'None'}, {value: 'WEP', key: 'WEP'}, {value: 'WPA', key: 'WPA'}, {value: 'WPA-2', key: 'WPA-2'}], help: 'This helps you to secure the Accesspoint with a Passkey. For a strong Security chose WPA-2.'})
     objForm.addTextbox({label: 'Passphrase', placeholder: 'Please enter a strong passphrase', help: 'If you chose no encryption you can ignore this. Otherwise this is the Password to enter to the Accesspoint.'});
     objForm.addTextbox({label: 'MAC Filtering', placeholder: 'Please enter all valid MAC addresses', help: 'If you want to allow only specific MAC adresses, type those in. You can type multiple MAC adresses and seperate them with semicolon.'});
