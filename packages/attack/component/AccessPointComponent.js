@@ -46,7 +46,18 @@ var AccessPointComponent = function(options) {
   this.renderGui = function(elContainer) {
     // Build Form
     var objForm = new PipOsFormBuilder();
-    objForm.addSelectbox({label: 'Interface', name:'iface' ,options: [{value: 'wlan_raspi', key: 'wlan_raspi'}, {value: 'wlan_stick', key: 'wlan_stick'}, {value: 'wlan_alfa', key: 'wlan_alfa'}], help: 'This is the interface wich the Accesspoint will setup.'})
+    objForm.addSelectbox({
+      label: 'Interface',
+      name:'iface' ,
+      options: [
+        {value: 'wlan_raspi', key: 'wlan_raspi'},
+        {value: 'wlan_stick', key: 'wlan_stick'},
+        {value: 'wlan_alfa', key: 'wlan_alfa'}
+      ],
+      help: 'This is the interface wich the Accesspoint will setup.',
+      validation: []
+    });
+
     objForm.addTextbox({label: 'SSID', name:'ssid' ,placeholder: 'Please enter SSID', help: 'The SSID is the name of the Wireless Network wich can be seen by all clients in the radius.'});
     objForm.addCheckbox({label: 'Hidden SSID', multi: [{name:'hidden_ssid', value: 'hide', key: 'Yes hide AP.'}], help: 'Stops Broadcasting and hides the network from being seen by nerby Clients.'})
     objForm.addTextbox({label: 'Channel', name:'channel' ,placeholder: 'Please enter a channel id from 1 to 14', help: 'This is the Channel number on wich the Accesspoint will send and recive data.'});
@@ -72,6 +83,8 @@ var AccessPointComponent = function(options) {
    * @return void
    */
   _private.validate = function(objData) {
+    // Use VALIDATOR
+
     // Fail
     $this.options.valide = false;
     // success
