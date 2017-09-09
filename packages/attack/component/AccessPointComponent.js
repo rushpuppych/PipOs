@@ -46,6 +46,8 @@ var AccessPointComponent = function(options) {
   this.renderGui = function(elContainer) {
     // Build Form
     var objForm = new PipOsFormBuilder();
+
+    // Interface Selectbox
     objForm.addSelectbox({
       label: 'Interface',
       name:'iface' ,
@@ -55,41 +57,83 @@ var AccessPointComponent = function(options) {
         {value: 'wlan_alfa', key: 'wlan_alfa'}
       ],
       help: 'This is the interface wich the Accesspoint will setup.',
-      validation: []
+      validation: {
+        mandatory: true,
+        max_length: 12,
+        min_length: 1,
+        charset: 'alpha-num-minspecial';
+      }
     });
 
-    objForm.addTextbox({label: 'SSID', name:'ssid' ,placeholder: 'Please enter SSID', help: 'The SSID is the name of the Wireless Network wich can be seen by all clients in the radius.'});
-    objForm.addCheckbox({label: 'Hidden SSID', multi: [{name:'hidden_ssid', value: 'hide', key: 'Yes hide AP.'}], help: 'Stops Broadcasting and hides the network from being seen by nerby Clients.'})
-    objForm.addTextbox({label: 'Channel', name:'channel' ,placeholder: 'Please enter a channel id from 1 to 14', help: 'This is the Channel number on wich the Accesspoint will send and recive data.'});
-    objForm.addSelectbox({label: 'Encryption', name:'encryption', options: [{value: 'none', key: 'None'}, {value: 'WEP', key: 'WEP'}, {value: 'WPA', key: 'WPA'}, {value: 'WPA-2', key: 'WPA-2'}], help: 'This helps you to secure the Accesspoint with a Passkey. For a strong Security chose WPA-2.'})
-    objForm.addTextbox({label: 'Passphrase', name:'passphrase' ,placeholder: 'Please enter a strong passphrase', help: 'If you chose no encryption you can ignore this. Otherwise this is the Password to enter to the Accesspoint.'});
-    objForm.addTextbox({label: 'MAC Filtering', name:'mac_filter' ,placeholder: 'Please enter all valid MAC addresses', help: 'If you want to allow only specific MAC adresses, type those in. You can type multiple MAC adresses and seperate them with semicolon.'});
-    objForm.addSubmit({callback: function(objData) {
-      _private.validate(objData);
-      $this.options.config_vars = objData;
-    }, close_modal: true});
+    // SSID Textbox
+    objForm.addTextbox({
+      label: 'SSID',
+      name:'ssid' ,
+      placeholder: 'Please enter SSID',
+      help: 'The SSID is the name of the Wireless Network wich can be seen by all clients in the radius.'
+    });
+
+    // Hidden SSID Checkbox
+    objForm.addCheckbox({
+      label: 'Hidden SSID',
+      multi: [
+        {name:'hidden_ssid', value: 'hide', key: 'Yes hide AP.'}
+      ],
+      help: 'Stops Broadcasting and hides the network from being seen by nerby Clients.'
+    });
+
+    // Channel Textbox
+    objForm.addTextbox({
+      label: 'Channel',
+      name:'channel' ,
+      placeholder: 'Please enter a channel id from 1 to 14',
+      help: 'This is the Channel number on wich the Accesspoint will send and recive data.'
+    });
+
+    // Encryption Selectbox
+    objForm.addSelectbox({
+      label: 'Encryption',
+      name:'encryption',
+      options: [
+        {value: 'none', key: 'None'},
+        {value: 'WEP', key: 'WEP'},
+        {value: 'WPA', key: 'WPA'},
+        {value: 'WPA-2', key: 'WPA-2'}
+      ],
+      help: 'This helps you to secure the Accesspoint with a Passkey. For a strong Security chose WPA-2.'
+    });
+
+    // Passphrase Textbox
+    objForm.addTextbox({
+      label: 'Passphrase',
+      name:'passphrase' ,
+      placeholder: 'Please enter a strong passphrase',
+      help: 'If you chose no encryption you can ignore this. Otherwise this is the Password to enter to the Accesspoint.'
+    });
+
+    // MAC Filtering Textbox
+    objForm.addTextbox({
+      label: 'MAC Filtering',
+      name:'mac_filter' ,
+      placeholder: 'Please enter all valid MAC addresses',
+      help: 'If you want to allow only specific MAC adresses, type those in. You can type multiple MAC adresses and seperate them with semicolon.'
+    });
+
+    // Form Submit Button
+    objForm.addSubmit({
+      callback: function(objData) {
+        $this.options.valide = false; // wird von objData gesetzt
+        $this.options.config_vars = objData;
+      },
+      close_modal: true,
+      validate_form: true
+    });
 
     // Render Form
     var strHtml = objForm.render();
     $(elContainer).html(strHtml);
     var strHtml = objForm.setGuiData($this.options.config_vars);
   };
-
-  /**
-   * validate
-   * @description
-   * This Method will validate the Gui Formular
-   * @param objData   The Formdata for the Validation
-   * @return void
-   */
-  _private.validate = function(objData) {
-    // Use VALIDATOR
-
-    // Fail
-    $this.options.valide = false;
-    // success
-    $this.options.valide = true;
-  }
 
   /**
    * setConfiguration
@@ -99,7 +143,9 @@ var AccessPointComponent = function(options) {
    * @return void
    */
   this.setConfiguration = function() {
-
+    // todo:
+    // $this.options.config_vars to Linux Configurations
+    // usind PipOsFilesystem Helper
   };
 
   /**
