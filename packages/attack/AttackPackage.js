@@ -155,7 +155,7 @@ var AttackPackage = function(options) {
       var objComponent = $this.options.attack_plan[numIndex];
       var objContainer = $('#modal_config_component').find('p.pip-card-text');
       objContainer.html("");
-      objComponent.renderGui(objContainer);
+      objComponent.renderConfigGui(objContainer);
       $('#modal_config_component').fadeIn();
       $('#modal_config_component').attr('data-component-id', numIndex);
     });

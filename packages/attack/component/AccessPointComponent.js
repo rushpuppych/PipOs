@@ -37,13 +37,13 @@ var AccessPointComponent = function(options) {
   }
 
   /**
-   * renderGui
+   * renderConfigGui
    * @description
    * THis Method will be called to render the Components Config UI
    * @param elContainer     This is the Container where the GUI is rendered to
    * @return void
    */
-  this.renderGui = function(elContainer) {
+  this.renderConfigGui = function(elContainer) {
     // Build Form
     var objForm = new PipOsFormBuilder();
 
@@ -61,7 +61,7 @@ var AccessPointComponent = function(options) {
         mandatory: true,
         max_length: 12,
         min_length: 1,
-        charset: 'alpha-num-minspecial';
+        charset: 'alpha-num-minspecial'
       }
     });
 
@@ -149,14 +149,26 @@ var AccessPointComponent = function(options) {
   };
 
   /**
-   * run
+   * execute
    * @description
    * This Method will be called to execute Shell Code wich is reading the Configs and Starting the
    * Attack Execution.
    * @param void
    * @return void
    */
-  this.run = function() {
+  this.execute = function() {
+    // todo:
+    // run shell code
+  };
 
+  /**
+   * renderExecutionGui
+   * @description
+   * This is the Gui Element that will be showed when the Attack is running
+   * @param void
+   * @return void
+   */
+  this.renderExecutionGui = function() {
+    // this is the Gui Part wich is rendered wenn attack is running
   };
 };

@@ -34,7 +34,7 @@ var AccessPointComponent = function(options) {
    * @param void
    * @return void
    */
-  this.renderGui() {
+  this.renderConfigGui = function() {
 
   };
 
@@ -45,19 +45,30 @@ var AccessPointComponent = function(options) {
    * @param void
    * @return void
    */
-  this.setConfiguration() {
+  this.setConfiguration = function() {
 
   };
 
   /**
-   * run
+   * execute
    * @description
    * This Method will be called to execute Shell Code wich is reading the Configs and Starting the
    * Attack Execution.
    * @param void
    * @return void
    */
-  this.run() {
+  this.execute = function() {
 
   };
+
+  /**
+   * renderExecutionGui
+   * @description
+   * This is the Gui Element that will be showed when the Attack is running
+   * @param void
+   * @return void
+   */
+  this.renderExecutionGui = function() {
+
+  }
 };
