@@ -319,3 +319,6 @@ var PipOs = function(options) {
    // Init Call
    $this.init();
 };
+
+// Global Variables
+var PipOs_GLOBAL = {};
