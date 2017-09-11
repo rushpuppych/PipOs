@@ -56,13 +56,7 @@ var AccessPointComponent = function(options) {
         {value: 'wlan_stick', key: 'wlan_stick'},
         {value: 'wlan_alfa', key: 'wlan_alfa'}
       ],
-      help: 'This is the interface wich the Accesspoint will setup.',
-      validation: {
-        mandatory: true,
-        max_length: 12,
-        min_length: 1,
-        charset: 'alpha-num-minspecial'
-      }
+      help: 'This is the interface wich the Accesspoint will setup.'
     });
 
     // SSID Textbox
@@ -70,7 +64,13 @@ var AccessPointComponent = function(options) {
       label: 'SSID',
       name:'ssid' ,
       placeholder: 'Please enter SSID',
-      help: 'The SSID is the name of the Wireless Network wich can be seen by all clients in the radius.'
+      help: 'The SSID is the name of the Wireless Network wich can be seen by all clients in the radius.',
+      validation: {
+        mandatory: true,
+        max_length: 12,
+        min_length: 1,
+        charset: 'alpha-num-minspecial'
+      }
     });
 
     // Hidden SSID Checkbox
@@ -122,17 +122,30 @@ var AccessPointComponent = function(options) {
     // Form Submit Button
     objForm.addSubmit({
       callback: function(objData) {
-        $this.options.valide = false; // wird von objData gesetzt
+        $this.options.valide = objData.valid;
         $this.options.config_vars = objData;
+        _private.renderForm(elContainer, objForm);
       },
-      close_modal: true,
       validate_form: true
     });
 
     // Render Form
+    _private.renderForm(elContainer, objForm);
+  };
+
+  /**
+   * renderForm
+   * @description
+   * Rendering Formular
+   * @param elContainer   The HTML Form will be rendered into this Formular
+   * @param objForm       This Form will be rendered
+   * @return void
+   */
+  _private.renderForm = function(elContainer, objForm) {
+    // Render Form
     var strHtml = objForm.render();
     $(elContainer).html(strHtml);
-    var strHtml = objForm.setGuiData($this.options.config_vars);
+    objForm.setGuiData($this.options.config_vars);
   };
 
   /**

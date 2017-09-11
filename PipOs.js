@@ -320,5 +320,5 @@ var PipOs = function(options) {
    $this.init();
 };
 
-// Global Variables
+// Global Scope
 var PipOs_GLOBAL = {};

@@ -272,3 +272,13 @@ select.pip-control:focus
   color: #81F79F !important;
   font-size: 12px !important;
 }
+
+.pip-validation-error {
+  border: 1px solid #ff0000 !important;
+  border-radius: 4px;
+  padding: 4px;
+}
+
+.pip-validation {
+  color: #ff0000 !important;
+}
