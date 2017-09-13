@@ -187,7 +187,7 @@ var AccessPointComponent = function(options) {
    * @return void
    */
   this.renderExecutionGui = function(objTerminal) {
-    objTerminal.echo('[AccessPoint]> Connected Clients: ' + Date.now());
+    objTerminal.echo("[[;#ffc107;]AccessPoint: ]Connected Clients: " + Date.now());
     // this goes into the Execution Terminal
     // this is the Gui Part wich is rendered wenn attack is running
   };

@@ -272,11 +272,19 @@ var AttackPackage = function(options) {
 
     // Render Terminal
     objTerminal.clear();
+    var boolHasComponents = false;
     for(var numIndex in $this.options.attack_plan) {
       if($this.options.attack_plan[numIndex].options.valide) {
         $this.options.attack_plan[numIndex].renderExecutionGui(objTerminal);
+        boolHasComponents = true;
       }
     };
+
+    // Warning wenn no Components Running
+    if(!boolHasComponents) {
+      objTerminal.echo("[[;#ff0000;] Woooops! there is no executable Component.]");
+      objTerminal.echo("[[;#848484;] ...or you are just a stupit dump ass ;-)]");
+    }
 
     // Recal Terminal Refresher every 1 Second
     setTimeout(function() {
