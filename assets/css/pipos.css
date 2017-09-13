@@ -204,6 +204,7 @@ body {
   background-color: transparent !important;
   font-family: pipboy-text !important;
   color: #CEF6CE !important;
+  display: none !important;
 }
 
 .pip-clickable:hover{
@@ -258,6 +259,9 @@ button.btn i.pull-left {
   font-size: 12px;
 }
 
+.pip-modal-fullsize {
+  position: fixed !important;
+}
 
 input.pip-control,
 input.pip-control:focus,

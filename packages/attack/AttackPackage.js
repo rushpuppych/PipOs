@@ -14,7 +14,8 @@ var AttackPackage = function(options) {
   this.options = $.extend({
     elContainer: '',
     components: [],
-    attack_plan: []
+    attack_plan: [],
+    attack_is_running: false
   }, options);
 
   /**
@@ -163,6 +164,12 @@ var AttackPackage = function(options) {
       $this.btnExecuteClick(this);
     });
 
+    // Click: Stop Execution
+    $('body').on('dblclick', 'div.btn-quit-attack', function() {
+      $this.btnRollbackDblClick(this);
+    });
+
+
     // Click Remove Component
   };
 
@@ -246,8 +253,57 @@ var AttackPackage = function(options) {
     };
 
     // Render Execution GUI
-    // todo: Clear Execution GUI
-    // todo: Call all Execution GUI methods every 1 second till Attack stop
+    $this.options.attack_is_running = true;
+    $this.renderExecutionGuiLoop(objTerminal);
+  };
+
+  /**
+   * renderExecutionGuiLoop
+   * @description
+   * This is the Attack Result Loop
+   * @param objTerminal     This is the Terminal Instance for Console Out
+   * @return void
+   */
+  this.renderExecutionGuiLoop = function(objTerminal) {
+    // Stop Execution
+    if(!$this.options.attack_is_running) {
+      return;
+    }
+
+    // Render Terminal
+    objTerminal.clear();
+    for(var numIndex in $this.options.attack_plan) {
+      if($this.options.attack_plan[numIndex].options.valide) {
+        $this.options.attack_plan[numIndex].renderExecutionGui(objTerminal);
+      }
+    };
+
+    // Recal Terminal Refresher every 1 Second
+    setTimeout(function() {
+        $this.renderExecutionGuiLoop(objTerminal);
+    }, 1000);
+  };
+
+  /**
+   * btnRollbackDblClick
+   * @description
+   * This is the Attack Execution Handler (on Click execute Button)
+   * @param elElement     This is the Element that triggers the Event
+   * @return void
+   */
+  this.btnRollbackDblClick = function(elElement) {
+    // Stop Running attack
+    $this.options.attack_is_running = false;
+    $(elElement).hide()
+
+    // todo: Config Rollback
+
+    // Execute Rollback Methodes
+    for(var numIndex in $this.options.attack_plan) {
+      if($this.options.attack_plan[numIndex].options.valide) {
+        $this.options.attack_plan[numIndex].rollbackAttack();
+      }
+    };
   };
 
   /**

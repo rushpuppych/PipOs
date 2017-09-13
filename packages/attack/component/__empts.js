@@ -42,10 +42,10 @@ var AccessPointComponent = function(options) {
    * setConfiguration
    * @description
    * This Method will be called to Set the Raspi Configuration
-   * @param void
+   * @param objTerminal     This is the Terminal Instance for Console Out
    * @return void
    */
-  this.setConfiguration = function() {
+  this.setConfiguration = function(objTerminal) {
 
   };
 
@@ -54,10 +54,10 @@ var AccessPointComponent = function(options) {
    * @description
    * This Method will be called to execute Shell Code wich is reading the Configs and Starting the
    * Attack Execution.
-   * @param void
+   * @param objTerminal     This is the Terminal Instance for Console Out
    * @return void
    */
-  this.execute = function() {
+  this.execute = function(objTerminal) {
 
   };
 
@@ -65,10 +65,21 @@ var AccessPointComponent = function(options) {
    * renderExecutionGui
    * @description
    * This is the Gui Element that will be showed when the Attack is running
+   * @param objTerminal     This is the Terminal Instance for Console Out
+   * @return void
+   */
+  this.renderExecutionGui = function(objTerminal) {
+
+  };
+
+  /**
+   * rollbackAttack
+   * @description
+   * This willbe called for Rollback Execution
    * @param void
    * @return void
    */
-  this.renderExecutionGui = function() {
+  this.rollbackAttack = function() {
 
-  }
+  };
 };

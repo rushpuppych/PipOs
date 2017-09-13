@@ -159,6 +159,7 @@ var AccessPointComponent = function(options) {
    * @return void
    */
   this.setConfiguration = function(objTerminal) {
+    objTerminal.echo('[AccessPoint]> Write Config "blaaa.cfg" to "blaa.cfg_backup"');
     // todo:
     // $this.options.config_vars to Linux Configurations
     // usind PipOsFilesystem Helper
@@ -173,6 +174,7 @@ var AccessPointComponent = function(options) {
    * @return void
    */
   this.execute = function(objTerminal) {
+    objTerminal.echo('[AccessPoint]> Execute: Restart LAN Adapter "wlan_alfa"');
     // todo:
     // run shell code
   };
@@ -185,7 +187,19 @@ var AccessPointComponent = function(options) {
    * @return void
    */
   this.renderExecutionGui = function(objTerminal) {
+    objTerminal.echo('[AccessPoint]> Connected Clients: ' + Date.now());
     // this goes into the Execution Terminal
     // this is the Gui Part wich is rendered wenn attack is running
+  };
+
+  /**
+   * rollbackAttack
+   * @description
+   * This willbe called for Rollback Execution
+   * @param void
+   * @return void
+   */
+  this.rollbackAttack = function() {
+    console.log('RESET ACCESSPOINT');
   };
 };
