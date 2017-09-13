@@ -285,4 +285,5 @@ select.pip-control:focus
 
 .pip-validation {
   color: #ff0000 !important;
+  display: block;
 }
