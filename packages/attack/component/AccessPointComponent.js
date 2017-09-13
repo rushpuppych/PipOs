@@ -129,6 +129,9 @@ var AccessPointComponent = function(options) {
       validate_form: true
     });
 
+    // Form Close Modal Button
+    objForm.addCloseModal({});
+
     // Render Form
     _private.renderForm(elContainer, objForm);
   };
@@ -152,10 +155,10 @@ var AccessPointComponent = function(options) {
    * setConfiguration
    * @description
    * This Method will be called to Set the Raspi Configuration
-   * @param void
+   * @param objTerminal     This is the Terminal Instance for Console Out
    * @return void
    */
-  this.setConfiguration = function() {
+  this.setConfiguration = function(objTerminal) {
     // todo:
     // $this.options.config_vars to Linux Configurations
     // usind PipOsFilesystem Helper
@@ -166,10 +169,10 @@ var AccessPointComponent = function(options) {
    * @description
    * This Method will be called to execute Shell Code wich is reading the Configs and Starting the
    * Attack Execution.
-   * @param void
+   * @param objTerminal     This is the Terminal Instance for Console Out
    * @return void
    */
-  this.execute = function() {
+  this.execute = function(objTerminal) {
     // todo:
     // run shell code
   };
@@ -178,10 +181,11 @@ var AccessPointComponent = function(options) {
    * renderExecutionGui
    * @description
    * This is the Gui Element that will be showed when the Attack is running
-   * @param void
+   * @param objTerminal     This is the Terminal Instance for Console Out
    * @return void
    */
-  this.renderExecutionGui = function() {
+  this.renderExecutionGui = function(objTerminal) {
+    // this goes into the Execution Terminal
     // this is the Gui Part wich is rendered wenn attack is running
   };
 };

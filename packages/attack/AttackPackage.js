@@ -134,39 +134,120 @@ var AttackPackage = function(options) {
     });
 
     // Click: Close Modal Button Handler
-    $('body').on('click', 'span.close_modal_btn', function() {
-      var strModalId = '#' + $(this).closest('div.pip-modal').attr('id');
-      $(strModalId).hide();
-      $this.renderAttackGui();
+    $('body').on('click', 'span.close_modal_btn, button.close_modal_btn', function() {
+      $this.btnCloseModalBtn(this);
     });
 
     // Click: Select Component Button Handler
     $('body').on('click', 'button.add_component_btn', function() {
-      var strComponentClass = $(this).data('class-name');
-      eval("var objComponent = new " + strComponentClass + "();");
-      $this.options.attack_plan.push(objComponent);
-      $this.renderAttackGui();
-      $this.runIlegalityCheck();
+      $this.btnAddComponentClick(this);
     });
 
     // Click: Config Component Button Handler
     $('body').on('click', 'button.config_component_btn', function() {
-      var numIndex = $(this).data('id');
-      var objComponent = $this.options.attack_plan[numIndex];
-      var objContainer = $('#modal_config_component').find('p.pip-card-text');
-      objContainer.html("");
-      objComponent.renderConfigGui(objContainer);
-      $('#modal_config_component').fadeIn();
-      $('#modal_config_component').attr('data-component-id', numIndex);
+      $this.btnConfigComponentClick(this);
     });
 
     // Click: Save
+    $('body').on('click', 'button.btn-save-attack', function() {
+      // todo: create Save
+    });
 
     // Click: Load
+    $('body').on('click', 'button.btn-load-attack', function() {
+      // todo: create load
+    });
 
     // Click: Execute
+    $('body').on('click', 'button.btn-execute-attack', function() {
+      $this.btnExecuteClick(this);
+    });
 
     // Click Remove Component
+  };
+
+  /**
+   * btnCloseModalBtn
+   * @description
+   * This is the close Modal handler (on Click close modal button)
+   * @param elElement     This is the Element that triggers the Event
+   * @return void
+   */
+  this.btnCloseModalBtn = function(elElement) {
+    var strModalId = '#' + $(elElement).closest('div.pip-modal').attr('id');
+    $(strModalId).hide();
+    $this.renderAttackGui();
+    $this.runIlegalityCheck();
+  };
+
+  /**
+   * btnAddComponentClick
+   * @description
+   * This is the Add Component Click handler (on Click add component button)
+   * @param elElement     This is the Element that triggers the Event
+   * @return void
+   */
+  this.btnAddComponentClick = function(elElement) {
+    var strComponentClass = $(elElement).data('class-name');
+    eval("var objComponent = new " + strComponentClass + "();");
+    $this.options.attack_plan.push(objComponent);
+    $this.renderAttackGui();
+    $this.runIlegalityCheck();
+  };
+
+  /**
+   * btnConfigComponentClick
+   * @description
+   * This is the Confing Component Handler (on Click config component Button)
+   * @param elElement     This is the Element that triggers the Event
+   * @return void
+   */
+  this.btnConfigComponentClick = function(elElement) {
+    var numIndex = $(elElement).data('id');
+    var objComponent = $this.options.attack_plan[numIndex];
+    var objContainer = $('#modal_config_component').find('p.pip-card-text');
+    objContainer.html("");
+    objComponent.renderConfigGui(objContainer);
+    $('#modal_config_component').fadeIn();
+    $('#modal_config_component').attr('data-component-id', numIndex);
+  };
+
+  /**
+   * btnExecuteClick
+   * @description
+   * This is the Attack Execution Handler (on Click execute Button)
+   * @param elElement     This is the Element that triggers the Event
+   * @return void
+   */
+  this.btnExecuteClick = function(elElement) {
+    // Open Terminal
+    $('#modal_execute_attack').fadeIn();
+    var objTerminal = $('#execution_terminal').terminal(function(command) {
+    },
+    {
+      greetings: '',
+      name: 'execute_attack',
+      height: 300,
+      prompt: '[PipOs]> '
+    });
+
+    // Set All Packages Configuration
+    for(var numIndex in $this.options.attack_plan) {
+      if($this.options.attack_plan[numIndex].options.valide) {
+        $this.options.attack_plan[numIndex].setConfiguration(objTerminal);
+      }
+    };
+
+    // Run All Packages Executions
+    for(var numIndex in $this.options.attack_plan) {
+      if($this.options.attack_plan[numIndex].options.valide) {
+        $this.options.attack_plan[numIndex].execute(objTerminal);
+      }
+    };
+
+    // Render Execution GUI
+    // todo: Clear Execution GUI
+    // todo: Call all Execution GUI methods every 1 second till Attack stop
   };
 
   /**

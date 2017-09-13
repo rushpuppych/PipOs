@@ -38,7 +38,7 @@
           <p class="card-text pip-card-text">
             <button class="btn btn-sm btn-success">Save</button>
             <button class="btn btn-sm btn-success">Load</button>
-            <button class="btn btn-sm btn-success pull-right">Execute</button>
+            <button class="btn btn-sm btn-success btn-execute-attack pull-right">Execute</button>
           </p>
         </div>
       </div>
@@ -78,7 +78,6 @@
             <div class="card-body pip-card-body">
               <p class="card-text pip-card-title">Component Configuration <span class="fa fa-times fa-2x close_modal_btn pull-right" style="margin-top:-8px;"></span</p>
               <p class="card-text pip-card-text">
-                CONTENT
               </p>
             </div>
           </div>
@@ -88,11 +87,56 @@
   </div>
 
   <!-- Save Attack Plan Modal -->
+  <div id="modal_save_attack_plan" class="pip-modal" style="display:none;">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="card pip-card">
+            <div class="card-body pip-card-body">
+              <p class="card-text pip-card-title">Load Attack Plan</p>
+              <p class="card-text pip-card-text">
+                CONTENT
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Load Attack Plan Modal -->
+  <div id="modal_load_attack_plan" class="pip-modal" style="display:none;">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="card pip-card">
+            <div class="card-body pip-card-body">
+              <p class="card-text pip-card-title">Load Attackplan</p>
+              <p class="card-text pip-card-text">
+                CONTENT
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Execution Terminal Modal -->
-  <!-- This displays the Terminal and starting the Attack -->
-  <!-- When The attack is running show PipOS full size Box with Attack Live view -->
-
+  <div id="modal_execute_attack" class="pip-modal" style="display:none;">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="card pip-card">
+            <div class="card-body pip-card-body">
+              <p class="card-text pip-card-title">Attack Execution</p>
+              <p class="card-text pip-card-text">
+                <div id="execution_terminal" style="height: 100%;"></div>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
