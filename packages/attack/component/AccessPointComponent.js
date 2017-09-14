@@ -73,7 +73,8 @@ var AccessPointComponent = function(options) {
       placeholder: 'Please enter SSID',
       help: 'The SSID is the name of the Wireless Network wich can be seen by all clients in the radius.',
       validation: {
-        checkMinSize: 10
+        checkMaxSize: 32,
+        checkMinSize: 3
       }
     });
 

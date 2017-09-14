@@ -130,41 +130,49 @@ var AttackPackage = function(options) {
    */
   this.eventManager = function() {
     // Click: Add Component Button Handler
+    $('body').off('click', 'button.add_modal_btn');
     $('body').on('click', 'button.add_modal_btn', function() {
       $('#modal_select_component').fadeIn();
     });
 
     // Click: Close Modal Button Handler
+    $('body').off('click', 'span.close_modal_btn, button.close_modal_btn');
     $('body').on('click', 'span.close_modal_btn, button.close_modal_btn', function() {
       $this.btnCloseModalBtn(this);
     });
 
     // Click: Select Component Button Handler
+    $('body').off('click', 'button.add_component_btn');
     $('body').on('click', 'button.add_component_btn', function() {
       $this.btnAddComponentClick(this);
     });
 
     // Click: Config Component Button Handler
+    $('body').off('click', 'button.config_component_btn');
     $('body').on('click', 'button.config_component_btn', function() {
       $this.btnConfigComponentClick(this);
     });
 
     // Click: Save
+    $('body').off('click', 'button.btn-save-attack');
     $('body').on('click', 'button.btn-save-attack', function() {
       // todo: create Save
     });
 
     // Click: Load
+    $('body').off('click', 'button.btn-load-attack');
     $('body').on('click', 'button.btn-load-attack', function() {
       // todo: create load
     });
 
     // Click: Execute
+    $('body').off('click', 'button.btn-execute-attack');
     $('body').on('click', 'button.btn-execute-attack', function() {
       $this.btnExecuteClick(this);
     });
 
     // Click: Stop Execution
+    $('body').off('click', 'button.btn-quit-attack');
     $('body').on('dblclick', 'div.btn-quit-attack', function() {
       $this.btnRollbackDblClick(this);
     });
