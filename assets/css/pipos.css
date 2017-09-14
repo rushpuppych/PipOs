@@ -287,3 +287,29 @@ select.pip-control:focus
   color: #ff0000 !important;
   display: block;
 }
+
+.pip-tabs {
+  border-bottom: 1px solid #81F79F !important;
+}
+
+.pip-tabs .active {
+  background-color: #81F79F !important;
+  color: #000000 !important;
+  border-color: #000000 !important;
+  border-bottom: 1px solid #81F79F !important;
+}
+
+.pip-tabs .nav-item {
+  background-color: transparent !important;
+  border: 1px dotted #81F79F !important
+  color: #ffffff !important;
+}
+
+.pip-tabs .nav-item:hover {
+  background-color: transparent !important;
+  color: #ffffff !important;
+}
+
+.pip-tabs a {
+  color: #81F79F !important;
+}

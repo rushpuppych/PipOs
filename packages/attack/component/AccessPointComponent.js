@@ -47,10 +47,16 @@ var AccessPointComponent = function(options) {
     // Build Form
     var objForm = new PipOsFormBuilder();
 
+    // Build Tab Naviation
+    objForm.addTab({group: 'basic', name: 'Basic'});
+    objForm.addTab({group: 'security', name: 'Security'});
+    objForm.addTab({group: 'terminal', name: 'Output'});
+
     // Interface Selectbox
     objForm.addSelectbox({
       label: 'Interface',
-      name:'iface' ,
+      name:'iface',
+      tab_group: 'basic',
       options: [
         {value: 'wlan_raspi', key: 'wlan_raspi'},
         {value: 'wlan_stick', key: 'wlan_stick'},
@@ -63,6 +69,7 @@ var AccessPointComponent = function(options) {
     objForm.addTextbox({
       label: 'SSID',
       name:'ssid' ,
+      tab_group: 'basic',
       placeholder: 'Please enter SSID',
       help: 'The SSID is the name of the Wireless Network wich can be seen by all clients in the radius.',
       validation: {
@@ -70,19 +77,11 @@ var AccessPointComponent = function(options) {
       }
     });
 
-    // Hidden SSID Checkbox
-    objForm.addCheckbox({
-      label: 'Hidden SSID',
-      multi: [
-        {name:'hidden_ssid', value: 'hide', key: 'Yes hide AP.'}
-      ],
-      help: 'Stops Broadcasting and hides the network from being seen by nerby Clients.'
-    });
-
     // Channel Textbox
     objForm.addTextbox({
       label: 'Channel',
       name:'channel' ,
+      tab_group: 'basic',
       placeholder: 'Please enter a channel id from 1 to 14',
       help: 'This is the Channel number on wich the Accesspoint will send and recive data.'
     });
@@ -91,6 +90,7 @@ var AccessPointComponent = function(options) {
     objForm.addSelectbox({
       label: 'Encryption',
       name:'encryption',
+      tab_group: 'security',
       options: [
         {value: 'none', key: 'None'},
         {value: 'WEP', key: 'WEP'},
@@ -104,6 +104,7 @@ var AccessPointComponent = function(options) {
     objForm.addTextbox({
       label: 'Passphrase',
       name:'passphrase' ,
+      tab_group: 'security',
       placeholder: 'Please enter a strong passphrase',
       help: 'If you chose no encryption you can ignore this. Otherwise this is the Password to enter to the Accesspoint.'
     });
@@ -112,8 +113,19 @@ var AccessPointComponent = function(options) {
     objForm.addTextbox({
       label: 'MAC Filtering',
       name:'mac_filter' ,
+      tab_group: 'security',
       placeholder: 'Please enter all valid MAC addresses',
       help: 'If you want to allow only specific MAC adresses, type those in. You can type multiple MAC adresses and seperate them with semicolon.'
+    });
+
+    // Hidden SSID Checkbox
+    objForm.addCheckbox({
+      label: 'Hidden SSID',
+      tab_group: 'security',
+      multi: [
+        {name:'hidden_ssid', value: 'hide', key: 'Yes hide AP.'}
+      ],
+      help: 'Stops Broadcasting and hides the network from being seen by nerby Clients.'
     });
 
     // Form Submit Button
@@ -142,7 +154,6 @@ var AccessPointComponent = function(options) {
    * @return void
    */
   _private.renderForm = function(elContainer, objForm) {
-    // Render Form
     var strHtml = objForm.render();
     $(elContainer).html(strHtml);
     objForm.setGuiData($this.options.config_vars);
