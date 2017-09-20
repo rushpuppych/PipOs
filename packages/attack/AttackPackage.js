@@ -8,6 +8,7 @@
  */
 var AttackPackage = function(options) {
   var $this = this;
+  var _private = {};
   var helper = new PipOsHelper();
 
   // PipOs System Variables
@@ -265,8 +266,11 @@ var AttackPackage = function(options) {
 
         // Copy Parsed Config Data to Linux Host System
         var strParsedConfigData = Mustache.render(strConfigData, objConfigVars);
-        // todo: Mustache Rendering fails ?? :-(
-        console.log(strFileName, strParsedConfigData)
+
+        // Save Config to destination
+        var strDestinationPath = _private.getDestinationPath(strConfigData);
+        
+
       }
     }
 
@@ -379,6 +383,28 @@ var AttackPackage = function(options) {
       $('#msg_ilegal_caution').hide();
       $('#msg_ilegal_warning').show();
     }
+  };
+
+  /**
+   * getDestinationPath
+   * @description
+   * This extracts the Destination Path Notation out of a config file
+   * @param strConfigData       This is the Config File
+   * @return String             This is the Destination Path
+   */
+  _private.getDestinationPath = function(strConfigData) {
+    // Get @target_file Notation
+    var numPos = strConfigData.indexOf('@target_file');
+    var strTemp = strConfigData.substring(numPos);
+
+    // Get Destination String
+    numPos = strTemp.indexOf('"') + 1;
+    strTemp = strTemp.substring(numPos);
+    numPos = strTemp.indexOf('"');
+    strTemp = strTemp.substring(0, numPos);
+
+    // Return Destination
+    return strTemp;
   };
 
   // Init Call

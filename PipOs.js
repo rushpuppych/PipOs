@@ -39,7 +39,8 @@ var PipOs = function(options) {
   this.options = $.extend({
     elRoot: 'div.pipos-content-box',
     packages: [],
-    config: []
+    config: [],
+    system_info: {},
   }, options);
 
   /**
@@ -48,6 +49,9 @@ var PipOs = function(options) {
   this.init = function() {
     // Loading Config.json to options
     _private.loadConfig();
+
+    // Load System Info
+    _private.loadSystemInfo();
 
     // Registering all Packages
     _private.registerPackages();
@@ -265,17 +269,23 @@ var PipOs = function(options) {
      var strDate = _private.twoDiggits(objDate.getDay()) + '/' + _private.twoDiggits(objDate.getMonth()) + '/' + _private.twoDiggits(objDate.getFullYear());
 
      // Get Battery Status
-     var numBattery = 3; // todo: set Battery
-     var numPercentBattery = 70 // todo: set Battery Percent
-     var strBattery = '<span><i class="fa fa-battery-' + numBattery + '"></i>&nbsp;' + numPercentBattery + '%</span>';
+     var numBattery = _private.calculateBatteryIcon($this.options.system_info.battery);
+     var numPercentBattery = $this.options.system_info.battery;
+     var strColor = '';
+     var strAnimation = '';
+     if(numBattery == 0) {
+       strColor = 'color: #ff0000;'
+       strAnimation = 'faa-pulse animated';
+     }
+     var strBattery = '<span style="' + strColor + '"><i class="fa fa-battery-' + numBattery + '  ' + strAnimation + '"></i>&nbsp;' + numPercentBattery + '%</span>';
 
      // Free Space
-     var numPercentFreeSpace = 30; // todo: set free Space
+     var numPercentFreeSpace = $this.options.system_info.diskspace; // todo: set free Space
      var strFreeSpace = '<span><i class="fa fa-hdd-o"></i>&nbsp;' + numPercentFreeSpace + '%</span>';
 
      // Network Trafic
-     var numUpTrafic = 12.34;
-     var numDownTrafic = 100.45;
+     var numUpTrafic = $this.options.system_info.network_up;
+     var numDownTrafic = $this.options.system_info.network_down;
      var strUpTrafic = '<span><i class="fa fa-arrow-up"></i>&nbsp;' + numUpTrafic + '</span>';
      var strDownTrafic = '<span><i class="fa fa-arrow-down"></i>&nbsp;' + numDownTrafic + '</span>';
 
@@ -315,6 +325,41 @@ var PipOs = function(options) {
        $('#pip-package-content').fadeIn();
      });
    };
+
+   /**
+    * loadSystemInfo
+    * @description
+    * This Method loads the System Informations for the GUI Display
+    * This Method acutalizes every 10seconds
+    * @param void
+    * @return void
+    */
+   _private.loadSystemInfo = function() {
+     // Load and set System Informations
+     var objJsonConfig = helper.loadFile('system_info.json');
+
+     if(typeof(objJsonConfig) != 'object') {
+       objJsonConfig = JSON.parse(objJsonConfig);
+     }
+     $this.options.system_info = objJsonConfig;
+
+     // Recal Every 10 Seconds
+     setTimeout(function() {
+       _private.loadSystemInfo();
+     }, 10000);
+   }
+
+   /**
+    * calculateBatteryIcon
+    * @description
+    * Calculates the Battery Icon from its Percentage value
+    * @param numBatteryPercentage   This is the Battery Percentage
+    * @return integer               This is The Fontawesome Battery icon nummer
+    */
+   _private.calculateBatteryIcon = function(numBatteryPercentage) {
+     var numBatteryIcon = Math.round(numBatteryPercentage / 25);
+     return numBatteryIcon;
+   }
 
    // Init Call
    $this.init();
