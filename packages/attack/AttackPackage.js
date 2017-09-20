@@ -253,6 +253,29 @@ var AttackPackage = function(options) {
       }
     };
 
+    // Generate Configurations
+    if(typeof(PipOs_GLOBAL['system']) != 'undefined') {
+      for(var strFileName in PipOs_GLOBAL['system']['config_files']) {
+        // Load Config File and Variables
+        var strConfigData = PipOs_GLOBAL['system']['config_files'][strFileName];
+        var objConfigVars = {};
+        if(typeof(PipOs_GLOBAL['system']['config_vars'][strFileName]) != 'undefined') {
+          objConfigVars = PipOs_GLOBAL['system']['config_vars'][strFileName];
+        }
+
+        // Copy Parsed Config Data to Linux Host System
+        var strParsedConfigData = Mustache.render(strConfigData, objConfigVars);
+        // todo: Mustache Rendering fails ?? :-(
+        console.log(strFileName, strParsedConfigData)
+      }
+    }
+
+
+    // Set All Configs on Linux System
+    // todo: clean the Mustache Commands out of the configuration
+    // todo: all configs are in PipOs_GLOBAL
+    // PipOs_GLOBAL['system']['config'];
+
     // Run All Packages Executions
     for(var numIndex in $this.options.attack_plan) {
       if($this.options.attack_plan[numIndex].options.valide) {

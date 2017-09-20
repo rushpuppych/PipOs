@@ -7,7 +7,7 @@ var AccessPointComponent = function(options) {
   var $this = this;
   var _private = {};
   var helper = new PipOsHelper();
-  var system = new PipOsSystem();
+  var system = new PipOsSystem({config_path: 'packages/attack/component/configs'});
 
   // PipOs System Variables
   this.options = $.extend({
@@ -168,10 +168,17 @@ var AccessPointComponent = function(options) {
    * @return void
    */
   this.setConfiguration = function(objTerminal) {
-    objTerminal.echo('[AccessPoint]> Write Config "blaaa.cfg" to "blaa.cfg_backup"');
-    // todo:
-    // $this.options.config_vars to Linux Configurations
-    // usind PipOsFilesystem Helper
+    // Write Config.conf
+    var objConfig = {
+      components: [
+        {test_content: 'Config 1'},
+        {test_content: 'Config 2'},
+        {test_content: 'Config 3'},
+      ]
+    };
+    system.setConfiguration('config.conf', objConfig);
+
+    // Write next config.
   };
 
   /**
