@@ -155,8 +155,7 @@ var AccessPointComponent = function(options) {
    * @return void
    */
   _private.renderForm = function(elContainer, objForm) {
-    var strHtml = objForm.render();
-    $(elContainer).html(strHtml);
+    var strHtml = objForm.render(elContainer);
     objForm.setGuiData($this.options.config_vars);
   };
 
