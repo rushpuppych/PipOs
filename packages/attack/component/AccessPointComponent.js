@@ -7,6 +7,7 @@ var AccessPointComponent = function(options) {
   var $this = this;
   var _private = {};
   var helper = new PipOsHelper();
+  var system = new PipOsSystem();
 
   // PipOs System Variables
   this.options = $.extend({
@@ -191,6 +192,7 @@ var AccessPointComponent = function(options) {
    * renderExecutionGui
    * @description
    * This is the Gui Element that will be showed when the Attack is running
+   * INFO: This will be called every second. So you can Refresh the Output.
    * @param objTerminal     This is the Terminal Instance for Console Out
    * @return void
    */
