@@ -1,9 +1,9 @@
 /**
- * AccessPointComponent
+ * WifiClientComponent
  * @description
- * This PipOs Components is setting up an Wireless Device in AccessPoint Mode
+ * This PipOs Components is setting up an Wireless Client Device
  */
-var AccessPointComponent = function(options) {
+var WifiClientComponent = function(options) {
   var $this = this;
   var helper = new PipOsHelper();
 
@@ -20,10 +20,10 @@ var AccessPointComponent = function(options) {
    */
   this.getInfo = function() {
     var objInfo = {
-      name: "AccessPoint",
+      name: "Wifi Client",
       icon: "fa fa-wifi",
-      color: "warning",
-      class_name: "AccessPointComponent",
+      color: "",
+      class_name: "WifiClientComponent",
       valide: $this.options.valide,
       resource: $this.options.resources,
       config_files: $this.options.config_files

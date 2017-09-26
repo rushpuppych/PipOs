@@ -52,7 +52,18 @@ var AttackPackage = function(options) {
    * @return void
    */
   this.registerComponents = function() {
+    // Wireless Components
     $this.addComponent(new AccessPointComponent());
+    $this.addComponent(new WifiClientComponent());
+    $this.addComponent(new WifiMonitorComponent());
+
+    // Attack Components
+    $this.addComponent(new SnifferComponent());
+    $this.addComponent(new InjectorComponent());
+    $this.addComponent(new DeauthComponent());
+
+    // Service Components
+    $this.addComponent(new DhcpDnsComponent());
   };
 
   /**

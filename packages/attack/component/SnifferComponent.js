@@ -1,9 +1,9 @@
 /**
- * AccessPointComponent
+ * SnifferComponent
  * @description
- * This PipOs Components is setting up an Wireless Device in AccessPoint Mode
+ * This PipOs Components is setting up an Network Sniffer
  */
-var AccessPointComponent = function(options) {
+var SnifferComponent = function(options) {
   var $this = this;
   var helper = new PipOsHelper();
 
@@ -20,10 +20,10 @@ var AccessPointComponent = function(options) {
    */
   this.getInfo = function() {
     var objInfo = {
-      name: "AccessPoint",
-      icon: "fa fa-wifi",
-      color: "warning",
-      class_name: "AccessPointComponent",
+      name: "Sniffer",
+      icon: "fa fa-user-secret",
+      color: "danger",
+      class_name: "SnifferComponent",
       valide: $this.options.valide,
       resource: $this.options.resources,
       config_files: $this.options.config_files
