@@ -36,8 +36,8 @@
       <div class="card pip-card" style="height:55px;">
         <div class="card-body pip-card-body">
           <p class="card-text pip-card-text">
-            <button class="btn btn-sm btn-success">Save</button>
-            <button class="btn btn-sm btn-success">Load</button>
+            <button class="btn btn-sm btn-success btn-save-attack">Save</button>
+            <button class="btn btn-sm btn-success btn-load-attack">Load</button>
             <button class="btn btn-sm btn-success btn-execute-attack pull-right">Execute</button>
           </p>
         </div>
@@ -93,9 +93,14 @@
         <div class="col-sm-12">
           <div class="card pip-card">
             <div class="card-body pip-card-body">
-              <p class="card-text pip-card-title">Load Attack Plan</p>
+              <p class="card-text pip-card-title">Save Attack Plan <span class="fa fa-times fa-2x close_modal_btn pull-right" style="margin-top:-8px;"></span</p></p>
               <p class="card-text pip-card-text">
-                CONTENT
+                <span>You can save your existing Attack Plans for later use. This Way it is possible to rebuild complex Attackplans quickly.</span>
+                <br><br>
+                <span style="font-weight: bold;">Enter Attackplan Name:</span>
+                <input type="text" class="form-control pip-control ui-keyboard-input ui-widget-content ui-corner-all ui-keyboard-input-current" placeholder="Attackplan Name...">
+                <br>
+                <button type="button" class="btn btn-sm btn-success">Save</button>
               </p>
             </div>
           </div>
@@ -111,9 +116,38 @@
         <div class="col-sm-12">
           <div class="card pip-card">
             <div class="card-body pip-card-body">
-              <p class="card-text pip-card-title">Load Attackplan</p>
+              <p class="card-text pip-card-title">Load Attackplan <span class="fa fa-times fa-2x close_modal_btn pull-right" style="margin-top:-8px;"></span</p></p>
               <p class="card-text pip-card-text">
-                CONTENT
+                <table class="table table-hover pip-table">
+                  <thead>
+                    <tr>
+                      <th style="width: 50%;">Name</th>
+                      <th style="width: 12%;">Comp.</th>
+                      <th style="width: 15%;">Legality</th>
+                      <th style="width: 23%;">Last</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Rouge AP Sniffer</td>
+                      <td>6</td>
+                      <td><span class="badge badge-danger">Ilegal</span></td>
+                      <td>2017-09-12</td>
+                    </tr>
+                    <tr>
+                      <td>Wifi Jammer</td>
+                      <td>6</td>
+                      <td><span class="badge badge-danger">Ilegal</span></td>
+                      <td>2017-09-12</td>
+                    </tr>
+                    <tr>
+                      <td>Fake Fiction</td>
+                      <td>6</td>
+                      <td><span class="badge badge-danger">Ilegal</span></td>
+                      <td>2017-09-12</td>
+                    </tr>
+                  </tbody>
+                </table>
               </p>
             </div>
           </div>

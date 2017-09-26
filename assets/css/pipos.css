@@ -313,3 +313,26 @@ select.pip-control:focus
 .pip-tabs a {
   color: #81F79F !important;
 }
+
+.pip-table {
+  font-size: 12px !important;
+  color: #81F79F !important;
+}
+
+.pip-table thead {
+  background-color: #0A2A12 !important;
+  color: #ffffff !important;
+}
+
+.pip-table thead th {
+  border: 1px solid #0B610B;
+}
+
+.pip-table tbody td {
+  border: 1px solid #0B610B;
+}
+
+.pip-table tbody tr:hover {
+  color: #000000 !important;
+  background-color: #81F79F !important;
+}

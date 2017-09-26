@@ -157,13 +157,13 @@ var AttackPackage = function(options) {
     // Click: Save
     $('body').off('click', 'button.btn-save-attack');
     $('body').on('click', 'button.btn-save-attack', function() {
-      // todo: create Save
+      $this.btnSaveAttackPlan(this);
     });
 
     // Click: Load
     $('body').off('click', 'button.btn-load-attack');
     $('body').on('click', 'button.btn-load-attack', function() {
-      // todo: create load
+      $this.btnLoadAttackPlan(this);
     });
 
     // Click: Execute
@@ -229,6 +229,28 @@ var AttackPackage = function(options) {
   };
 
   /**
+   * btnSaveAttackPlan
+   * @description
+   * This is The Button that opens the Attackplan Saver Modal
+   * @param void
+   * @return void
+   */
+  this.btnSaveAttackPlan = function() {
+    $('#modal_save_attack_plan').fadeIn();
+  };
+
+  /**
+   * btnLoadAttackPlan
+   * @description
+   * This is The Button that opens the Attackplan Loader Modal
+   * @param void
+   * @return void
+   */
+  this.btnLoadAttackPlan = function() {
+    $('#modal_load_attack_plan').fadeIn();
+  };
+
+  /**
    * btnExecuteClick
    * @description
    * This is the Attack Execution Handler (on Click execute Button)
@@ -269,16 +291,10 @@ var AttackPackage = function(options) {
 
         // Save Config to destination
         var strDestinationPath = _private.getDestinationPath(strConfigData);
-        
+        // todo: FS Copy !!!
 
       }
     }
-
-
-    // Set All Configs on Linux System
-    // todo: clean the Mustache Commands out of the configuration
-    // todo: all configs are in PipOs_GLOBAL
-    // PipOs_GLOBAL['system']['config'];
 
     // Run All Packages Executions
     for(var numIndex in $this.options.attack_plan) {
