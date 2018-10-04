@@ -9,23 +9,58 @@ https://www.raspberrypi.org/downloads/raspbian/
 
 ### Raspi Basic Configuration
 Now Power the Raspberry Pi. After the Login execute:
-```
+```sh
 sudo raspi-config
 ```
 Then do your Localisation settings (Timezone, Keyboard etc.) and enable the SSH Service.
 
 ### Configure the Internet
-Then you have to establish the connection to the Internet (Wifi or LAN doesnt matter). Try to get a IP and Ping the Google DNS service ("ping 8.8.8.8").
+Then you have to establish the connection to the Internet (Wifi or LAN doesnt matter). Try to get a IP and Ping the Google DNS service:
+```sh
+ping 8.8.8.8
+```
 
 ### Update and Upgrade Rasbian
 After you have established a Internet connection execute:
-```
+```sh
 sudo apt-get update
 sudo apt-get upgrade
 ```
 
-## Install Dependecy Packages for PipOs
-All packages: git, matchbox, xwindow, unclutter, node, kali install tool etc. etc.
+## Install Dependency Packages for PipOs
+```sh
+sudo apt-get install git
+sudo apt-get install matchbox
+sudo apt-get install xwindow
+sudo apt-get install unclutter
+sudo apt-get install node
+```
+
+### Install Kali Linux Tools
+Make sure you add the kali-linux repositories to your apt list configuration
+(e.g. create a file called kali.list in the directory /etc/apt/sources.list.d)
+```sh
+sudo nano /etc/apt/sources.list.d/kali.list
+```
+
+and Add the folowing repos to the list:
+```sh
+deb http://http.kali.org/kali kali main non-free contrib
+deb http://security.kali.org/kali-security kali/updates main contrib non-free
+deb http://repo.kali.org/kali kali-bleeding-edge main
+```
+
+Update all your apt dependency again
+```sh
+sudo apt-get update
+```
+
+Install Kali Install Tools
+```sh
+sudo apt-get install kali-linux-wireless
+sudo apt-get install kali-linux-pwtools
+sudo apt-get install kali-linux-web
+```
 
 ## Build PipOs Kiosk Mode
 get Electron framework
